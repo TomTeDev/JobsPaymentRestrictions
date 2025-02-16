@@ -1,0 +1,7 @@
+messages:
+  wrong_tool_notification: ""
+blocked-enchants:
+  - "SILK_TOUCH"
+  - "DURABILITY:10"
+  - "WISDOM:2"
+

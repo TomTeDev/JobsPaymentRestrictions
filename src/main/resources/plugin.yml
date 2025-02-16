@@ -1,0 +1,5 @@
+name: JobsPaymentRestrictions
+version: '${project.version}'
+depend: [Jobs]
+main: more.mucho.jobspaymentrestrictions.JobsPaymentRestrictions
+api-version: '1.20'
