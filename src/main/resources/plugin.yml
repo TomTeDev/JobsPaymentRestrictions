@@ -1,5 +1,6 @@
 name: JobsPaymentRestrictions
 version: '${project.version}'
 depend: [Jobs]
+softdepend: [Essentials]
 main: more.mucho.jobspaymentrestrictions.JobsPaymentRestrictions
 api-version: '1.20'

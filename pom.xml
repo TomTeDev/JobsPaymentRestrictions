@@ -63,6 +63,14 @@
           <id>jitpack.io</id>
           <url>https://jitpack.io</url>
       </repository>
+      <repository>
+          <id>essentialsX</id>
+          <url>https://repo.essentialsx.net/releases/</url>
+      </repository>
+      <repository>
+          <id>papermc</id>
+          <url>https://repo.papermc.io/repository/maven-public/</url>
+      </repository>
   </repositories>
 
   <dependencies>
@@ -75,8 +83,20 @@
       <dependency>
           <groupId>com.github.Zrips</groupId>
           <artifactId>Jobs</artifactId>
-          <version>v5.2.2.3</version> <!-- Change the LATEST to the current version of jobs -->
+          <version>v5.2.2.3</version>
           <scope>provided</scope>
       </dependency>
+      <dependency>
+          <groupId>net.essentialsx</groupId>
+          <artifactId>EssentialsX</artifactId>
+          <version>2.20.1</version>
+          <scope>provided</scope>
+      </dependency>
+      <dependency>
+          <groupId>io.papermc</groupId>
+          <artifactId>paperlib</artifactId>
+          <version>1.0.6</version>
+      </dependency>
+
   </dependencies>
 </project>

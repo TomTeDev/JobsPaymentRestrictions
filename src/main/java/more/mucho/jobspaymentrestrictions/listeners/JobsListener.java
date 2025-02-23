@@ -1,7 +1,9 @@
 package more.mucho.jobspaymentrestrictions.listeners;
 
+import com.earth2me.essentials.Essentials;
 import com.gamingmesh.jobs.api.JobsPrePaymentEvent;
 import more.mucho.jobspaymentrestrictions.JobsPaymentRestrictions;
+import net.ess3.api.IEssentials;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.OfflinePlayer;
@@ -17,7 +19,7 @@ import java.util.HashMap;
 
 public class JobsListener implements Listener{
     private final JobsPaymentRestrictions plugin;
-    private HashMap<String,Long> lastMessageTimeMap = new HashMap<>();
+    private final HashMap<String,Long> lastMessageTimeMap = new HashMap<>();
     public JobsListener(JobsPaymentRestrictions plugin){
         this.plugin = plugin;
     }
@@ -29,7 +31,7 @@ public class JobsListener implements Listener{
         Player player = offlinePlayer.getPlayer();
         if(player == null)return;
         ItemStack tool = player.getInventory().getItemInMainHand();
-        if(!isToolRestricted(tool))return;
+        if(!isToolRestricted(tool) && !isAfk(player))return;
         event.setCancelled(true);
         sendMessage(player);
     }
@@ -48,6 +50,7 @@ public class JobsListener implements Listener{
             }catch (Exception ignored){}
             if(level<0)return true;
             if(meta.getEnchantLevel(enchantment)>=level)return true;
+
         }
         return false;
     }
@@ -60,5 +63,11 @@ public class JobsListener implements Listener{
         if(message!=null&&!message.isEmpty()){
             player.sendMessage(ChatColor.translateAlternateColorCodes('&',message));
         }
+    }
+
+    private boolean isAfk(Player player){
+        IEssentials iEssentials = plugin.getEssentials();
+        if(iEssentials == null)return false;
+        return iEssentials.getUser(player).isAfk();
     }
 }
